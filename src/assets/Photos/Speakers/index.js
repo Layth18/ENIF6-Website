@@ -1,0 +1,13 @@
+export { default as AhmedCheikhrouhou } from './ahmed cheikhrouhou.jpg';
+export { default as AkramTaktak } from './akram taktak.jpg';
+export { default as AmineEllouze } from './amine ellouze.jpg';
+export { default as HediTmar } from './Hedi Tmar.jpeg';
+export { default as HelaAidi } from './Hela Aidi.jpg';
+export { default as InesCheniour } from './ines cheniour.jpg';
+export { default as MariemMarrekchi } from './mariem marrekchi.jpeg';
+export { default as MohamedKharrat } from './mohamed kharrat.jpeg';
+export { default as Syrine } from './syrine.jpeg';
+export { default as TahaMtira } from './Taha Mtira.jpg';
+export { default as TakouaBouchouicha } from './takoua bouchouicha.jpg';
+export { default as WalidLaabidi } from './walid laabidi.jpg';
+export { default as Yoldez } from './yoldez.jpg';

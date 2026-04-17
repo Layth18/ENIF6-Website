@@ -1,0 +1,11 @@
+export { default as acm } from './acm.png';
+export { default as airfit } from './AIRFIT.png';
+export { default as daad } from './DAAD.png';
+export { default as dgima } from './DGIMA.png';
+export { default as enis } from './ENIS.png';
+export { default as habemus } from './habemus.png';
+export { default as leoni } from './LEONI.png';
+export { default as leti } from './LETI.png';
+export { default as olivia } from './olivia.png';
+export { default as regim } from './Regim.png';
+export { default as relev } from './RELEV.png';

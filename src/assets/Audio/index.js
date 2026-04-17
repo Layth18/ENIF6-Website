@@ -1,0 +1,1 @@
+export {default as MagnetaAudio} from './Magenta.mp3';

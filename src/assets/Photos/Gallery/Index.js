@@ -1,0 +1,9 @@
+export { default as ClosingCermony } from './ClosingCermony.jpg';
+export { default as IOTSession } from './IOTSession.jpg';
+export { default as Leoni } from './Leoni.jpg';
+export { default as OnlineSession } from './OnlineSession.jpg';
+export { default as OpeningCermony } from './OpeningCermony.jpg';
+export { default as Pitching1 } from './Pitching1.jpg';
+export { default as Pitching2 } from './Pitching2.jpg';
+export { default as Pitching3 } from './Pitching3.jpg';
+export { default as WelcomingBack } from './WelcomingBack.jpg';
