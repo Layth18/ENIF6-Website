@@ -7,6 +7,7 @@ export { default as DoniaRectangle } from './Donia-01.png';
 export { default as JallouliRectangle } from './Jallouli-01.png';
 export { default as LaythRectangle } from './Layth-01.png';
 export { default as MakniRectangle } from './Makni-01.png';
+export { default as MeftahRectangle } from './Meftah-01.png';
 export { default as MezghaniRectangle } from './Mezghani-01.png';
 export { default as OlaRectangle } from './Ola-01.png';
 export { default as OussemaRectangle } from './Oussema-01.png';

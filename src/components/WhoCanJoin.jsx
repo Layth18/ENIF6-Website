@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Lock, Book } from 'lucide-react';
 
 export default function WhoCanJoin() {
@@ -6,6 +6,10 @@ export default function WhoCanJoin() {
   const TARGET_DATE = new Date('2026-06-01T12:00:00'); 
   
   const [isEventUnlocked, setIsEventUnlocked] = useState(false);
+  
+  // Intersection Observer State
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     // Function to check if the target date has passed for the event
@@ -22,11 +26,45 @@ export default function WhoCanJoin() {
     return () => clearInterval(interval);
   }, []);
 
+  // Intersection Observer Effect for Watermark
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Triggers when 30% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="join" className="py-[120px] px-8 relative overflow-hidden bg-[#FAFDFA]">
-      <div className="absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none text-[#114B11]/[0.07] pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap">
+    <section 
+      id="join" 
+      ref={sectionRef}
+      className="py-[120px] px-8 relative overflow-hidden bg-[#FAFDFA]"
+    >
+      {/* Background Watermark */}
+      <div 
+        className={`absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap transition-all duration-700 ease-in-out ${
+          isVisible
+            ? "bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-transparent bg-clip-text opacity-70"
+            : "text-[#114B11] opacity-[0.07]"
+        }`}
+      >
         PARTICIPATION
       </div>
+      
       {/* Decorative Background Glow */}
       <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(54,206,90,0.07)_0%,transparent_70%)] pointer-events-none rounded-full" />
 
@@ -101,8 +139,6 @@ export default function WhoCanJoin() {
                   <Book size={22} />
                 </a>
 
-                
-                
               </div>
               
             </div>

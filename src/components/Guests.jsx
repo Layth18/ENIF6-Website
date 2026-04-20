@@ -1,9 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GUESTS } from "../data/siteData";
 
 export default function Guests() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const total = GUESTS.length;
+
+  // Intersection Observer State
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Triggers when 30% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const nextGuest = () => {
     setCurrentIndex((prev) => (prev + 1) % total);
@@ -16,21 +41,30 @@ export default function Guests() {
   return (
     <section
       id="guests"
+      ref={sectionRef}
       className="py-[120px] px-4 md:px-8 relative overflow-hidden bg-white"
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none text-[#114B11]/[0.07] pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap">
+        {/* Background Watermark */}
+        <div 
+          className={`absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap transition-all duration-700 ease-in-out ${
+            isVisible
+              ? "bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-transparent bg-clip-text opacity-70"
+              : "text-[#114B11] opacity-[0.07]"
+          }`}
+        >
           GUESTS
         </div>
+        
         {/* Header */}
-        <div className="reveal text-center mb-[60px]">
+        <div className="reveal text-center mb-[60px] relative z-10">
           <h2 className="font-['Outfit',sans-serif] font-extrabold text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight text-[#114B11]">
             Minds that shaped the stage throughout the editions.
           </h2>
         </div>
 
         {/* Carousel Area */}
-        <div className="reveal flex items-center justify-center gap-4 md:gap-8 relative w-full max-w-[1100px] mx-auto">
+        <div className="reveal flex items-center justify-center gap-4 md:gap-8 relative w-full max-w-[1100px] mx-auto z-10">
           {/* Left Arrow */}
           <button
             onClick={prevGuest}

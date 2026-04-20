@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TEAM } from "../data/siteData";
 
 export default function Team() {
@@ -7,10 +7,36 @@ export default function Team() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPaginating, setIsPaginating] = useState(false);
 
+  // Intersection Observer State
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
   // Pagination Logic
   const ITEMS_PER_PAGE = 5;
   const totalPages = Math.ceil(TEAM.length / ITEMS_PER_PAGE);
   const selectedMember = TEAM[selectedIndex];
+
+  // Intersection Observer Effect for Watermark
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Triggers when 30% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   // Auto-scroll every 10 seconds
   useEffect(() => {
@@ -87,10 +113,17 @@ export default function Team() {
   return (
     <section
       id="team"
+      ref={sectionRef}
       className="py-[60px] md:py-[120px] px-4 md:px-8 relative overflow-hidden bg-[#FAFDFA] flex flex-col justify-center min-h-screen"
     >
       {/* Background Watermark */}
-      <div className="absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none text-[#114B11]/[0.07] pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap">
+      <div 
+        className={`absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap transition-all duration-700 ease-in-out ${
+          isVisible
+            ? "bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-transparent bg-clip-text opacity-70"
+            : "text-[#114B11] opacity-[0.07]"
+        }`}
+      >
         TEAM
       </div>
 

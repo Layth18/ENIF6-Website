@@ -7,6 +7,7 @@ export { default as DoniaSquare } from './Donia-01.png';
 export { default as JallouliSquare } from './Jallouli-01.png';
 export { default as LaythSquare } from './Layth-01.png';
 export { default as MakniSquare } from './Makni-01.png';
+export { default as MeftahSquare } from './Meftah-01.png';
 export { default as MezghanniSquare } from './Mezghanni-01.png';
 export { default as OlaSquare } from './Ola-01.png';
 export { default as OussemaSquare } from './Oussema-01.png';

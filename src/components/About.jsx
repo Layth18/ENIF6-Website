@@ -1,13 +1,46 @@
+import { useState, useEffect, useRef } from "react";
 import { Laptop, Users, Mic, Trophy } from "lucide-react";
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Toggle visibility based on whether the section is intersecting the viewport
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Triggers when 30% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section
       id="about"
+      ref={sectionRef}
       className="py-[120px] px-8 relative overflow-hidden bg-[#FAFDFA]"
     >
-      {/* Giant Background Watermark Text - Smaller & Darker */}
-      <div className="absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none text-[#114B11]/[0.07] pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap">
+      {/* Giant Background Watermark Text */}
+      <div
+        className={`absolute top-[2%] right-[2%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap transition-all duration-700 ease-in-out ${
+          isVisible
+            ? "bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-transparent bg-clip-text opacity-70"
+            : "text-[#114B11] opacity-[0.07]"
+        }`}
+      >
         ABOUT US
       </div>
 
@@ -85,7 +118,7 @@ export default function About() {
             Our Former Activities
           </h3>
 
-          {/* Asymmetrical Grid: the gap-y-4 and offset logic creates a staggered, modern look */}
+          {/* Asymmetrical Grid */}
           <div className="grid grid-cols-2 gap-5">
             {[
               { icon: Laptop, title: "Bootcamp" },
@@ -94,7 +127,6 @@ export default function About() {
               { icon: Trophy, title: "Competition" },
             ].map((item, i) => {
               const Icon = item.icon;
-              // Push every second item down to create a staggered masonry effect
               const isOffset = i % 2 !== 0;
 
               return (
@@ -102,18 +134,13 @@ export default function About() {
                   key={i}
                   className={`group flex flex-col items-center justify-center text-center bg-white/80 backdrop-blur-md hover:bg-gradient-to-br hover:from-[#228B22] hover:to-[#114B11] rounded-[24px] p-6 min-h-[170px] shadow-[0_8px_32px_rgba(17,75,17,0.04)] border border-[#228B22]/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(17,75,17,0.15)] relative overflow-hidden ${isOffset ? "mt-8" : "mb-8"}`}
                 >
-                  {/* Subtle dynamic glow ring inside the card */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#36D336]/0 group-hover:bg-[#36D336]/20 blur-2xl rounded-full transition-all duration-700" />
-
-                  {/* Accent top line - smooth fade */}
                   <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-transparent via-[#36D336]/40 group-hover:via-white/40 to-transparent transition-colors duration-500" />
 
-                  {/* Icon container with bounce/scale effect */}
                   <div className="mb-5 p-3 rounded-full bg-[#FAFDFA] group-hover:bg-white/10 transition-colors duration-500">
                     <Icon className="w-8 h-8 text-[#228B22] group-hover:text-white transform group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500" />
                   </div>
 
-                  {/* Text color swaps from dark green to white on hover */}
                   <div className="font-['Outfit',sans-serif] font-bold text-[1.25rem] text-[#114B11] group-hover:text-white tracking-tight transition-colors duration-500 relative z-10">
                     {item.title}
                   </div>
@@ -124,7 +151,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Edge accent line */}
       <div className="absolute left-0 top-1/2 w-[4px] h-[120px] bg-gradient-to-b from-transparent via-[#36D336] to-transparent -translate-y-1/2 opacity-50" />
     </section>
   );

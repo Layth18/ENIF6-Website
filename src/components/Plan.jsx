@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { TIMELINE_EVENTS } from "../data/siteData";
 
 export default function Plan() {
@@ -9,6 +9,31 @@ export default function Plan() {
 
   const [activeDay, setActiveDay] = useState(days[0]);
 
+  // Intersection Observer State
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Triggers when 30% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Filter events for the currently selected day
   const currentEvents = useMemo(() => {
     return TIMELINE_EVENTS.filter((event) => event.date === activeDay);
@@ -17,11 +42,20 @@ export default function Plan() {
   return (
     <section
       id="timeline"
+      ref={sectionRef}
       className="py-[100px] px-8 relative overflow-hidden bg-[#FFFFFF]"
     >
-      <div className="absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none text-[#114B11]/[0.07] pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap">
+      {/* Background Watermark */}
+      <div 
+        className={`absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap transition-all duration-700 ease-in-out ${
+          isVisible
+            ? "bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-transparent bg-clip-text opacity-70"
+            : "text-[#114B11] opacity-[0.07]"
+        }`}
+      >
         PLAN
       </div>
+      
       <div className="max-w-[700px] mx-auto relative z-10">
         {/* Header */}
         <div className="reveal mb-12 text-center">

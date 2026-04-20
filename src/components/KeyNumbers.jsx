@@ -27,31 +27,49 @@ function StatCard({ stat, started }) {
 
 export default function KeyNumbers() {
   const [started, setStarted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { 
-        if (entry.isIntersecting) { 
+        // Toggle the watermark visibility continuously
+        setIsVisible(entry.isIntersecting);
+        
+        // Start the counter once it enters the viewport
+        if (entry.isIntersecting && !started) { 
           setStarted(true); 
-          observer.disconnect(); 
         } 
       },
       { threshold: 0.3 }
     );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+    
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [started]); // Added started to dependency array to avoid stale state issues
 
   return (
-    <section id="numbers" className="py-[120px] px-8 relative overflow-hidden bg-white">
+    <section id="numbers" className="py-[120px] px-8 relative overflow-hidden bg-white" ref={ref}>
       
-      {/* Giant Background Watermark Text - Back to original place */}
-      <div className="absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none text-[#114B11]/[0.07] pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap">
+      {/* Giant Background Watermark Text */}
+      <div 
+        className={`absolute top-[0%] right-[1%] font-['Outfit',sans-serif] font-extrabold text-[clamp(3rem,6vw,6rem)] leading-none pointer-events-none select-none z-[0] tracking-tighter whitespace-nowrap transition-all duration-700 ease-in-out ${
+          isVisible
+            ? "bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-transparent bg-clip-text opacity-70"
+            : "text-[#114B11] opacity-[0.07]"
+        }`}
+      >
         NUMBERS
       </div>
 
-      <div className="max-w-[1200px] mx-auto relative z-[10]" ref={ref}>
+      <div className="max-w-[1200px] mx-auto relative z-[10]">
         
         {/* Minimalist Header */}
         <div className="reveal text-center mb-20 mt-10">

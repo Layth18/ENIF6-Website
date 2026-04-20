@@ -11,6 +11,7 @@ import {
   JallouliRectangle,
   LaythRectangle,
   MakniRectangle,
+  MeftahRectangle,
   MezghaniRectangle,
   OlaRectangle,
   OussemaRectangle,
@@ -30,6 +31,7 @@ import {
   JallouliSquare,
   LaythSquare,
   MakniSquare,
+  MeftahSquare,
   MezghanniSquare,
   OlaSquare,
   OussemaSquare,
@@ -140,17 +142,35 @@ export const STATS = [
 
 export const SESSIONS = [
   {
-    title:
-      "From Writing to Publishing: A Complete Guide to IEEE Research Success",
+    title: "From Writing to Publishing: A Complete Guide to IEEE Research Success",
     speaker: "Jalyn Kelley",
-    date: "April 18, 2026",
+    announcementDate: "April 16, 2026",
+    sessionDate: "April 18, 2026", 
+    announcementLink: "https://www.facebook.com/photo/?fbid=122283365390034032&set=pb.61551020983150.-2207520000",
+    recapLink: "https://drive.google.com/drive/folders/1c3P2nFcqoyPnEyZyfNwX8N_eXcRWRAhX",
+  },
+  {
+    title: "Explore the BMC ",
+    speaker: "Ahmed Oussleti",
+    announcementDate: "April 21, 2026",
+    sessionDate: "April 22, 2026",
+    announcementLink: "#",
+    recapLink: "#",
+  },
+  {
+    title: "Explore the Pitch Deck",
+    speaker: "Fahmi Bedbabis",
+    announcementDate: "April 22, 2026",
+    sessionDate: "April 23, 2026",
+    announcementLink: "#",
+    recapLink: "#",
   },
 ];
 
 export const TIMELINE_EVENTS = [
   { date: "03 May", time: "09:00", title: "Check-in" },
   { date: "03 May", time: "09:30", title: "Opening Ceremony" },
-  { date: "03 May", time: "10:00", title: "Introduction to IAS" },
+  { date: "03 May", time: "10:00", title: "IAS Keynotes" },
   { date: "03 May", time: "10:30", title: "Coffee Break" },
   { date: "03 May", time: "11:00", title: "Panel Discussion" },
   { date: "03 May", time: "12:30", title: "Lunch" },
@@ -341,8 +361,8 @@ export const TEAM = [
     name: "Yassine Meftah",
     role: "Planning Manager",
     bio: "Strategizes the project roadmaps to turn overarching visions into actionable steps.",
-    portrait: PlaceholderRectangle,
-    thumbnail: PlaceholderSquare,
+    portrait: MeftahRectangle,
+    thumbnail: MeftahSquare,
     facebook: "#",
     instagram: "#",
     linkedin: "#",
@@ -417,11 +437,11 @@ export const TEAM = [
   {
     name: "Amin Frikha",
     role: "Logistic Member",
-    bio: "Handles operations on the ground, ensuring resources are exactly where they need to be.",
+    bio: "Amin Frikha is a 22-year-old computer science engineering student at the National Engineering School of Sfax. He is actively engaged in IEEE activities and is the former Vice Chairman of the IEEE Cyber Security ENIS Unit, where he contributed to leading initiatives and supporting cybersecurity-focused student programs.",
     portrait: PlaceholderRectangle,
     thumbnail: PlaceholderSquare,
-    facebook: "#",
-    instagram: "#",
+    facebook: "https://www.facebook.com/amin.frikha.353/",
+    instagram: "https://www.instagram.com/amin_frikha03?fbclid=IwY2xjawRPhRJleHRuA2FlbQIxMABicmlkETFaeEhqbkM4WktFQ3VPWlc4c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk6tzwwGzv1ic0-fRV4fmVCtSPZ6ZOEZkFKC0vIcLHMg_mBobyabWVqzNzRU_aem_R7EiwjjLwW1qIk_VQO-rDQ",
     linkedin: "#",
   },
 
@@ -439,12 +459,12 @@ export const TEAM = [
   {
     name: "Emna Abbassi",
     role: "ENIS Ambassador",
-    bio: "Encourages student involvement in IEEE activities, promotes events, and fosters a sense of community among members.",
+    bio: "Emna Abbassi , chair of IEEE EMBS ENIS SBc a 22-year-old Biological Engineering student at the National engineering School of Sfax . Enthusiastic , highly responsible, and driven by curiosity for biotecghnology and innovation .Skilled in communication and leadership.",
     portrait: PlaceholderRectangle,
     thumbnail: PlaceholderSquare,
-    facebook: "#",
-    instagram: "#",
-    linkedin: "#",
+    facebook: "https://www.facebook.com/amna.abbassi.94/",
+    instagram: "https://www.instagram.com/emnaa_abbassi?igsh=bGJvdXBqaDFsdGMz",
+    linkedin: "www.linkedin.com/in/emna-abbassi-50298b370",
   },
   {
     name: "Hedi Gouiaa",
