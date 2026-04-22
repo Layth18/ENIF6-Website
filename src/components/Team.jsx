@@ -12,7 +12,7 @@ export default function Team() {
   const sectionRef = useRef(null);
 
   // Pagination Logic
-  const ITEMS_PER_PAGE = 5;
+  const ITEMS_PER_PAGE =5;
   const totalPages = Math.ceil(TEAM.length / ITEMS_PER_PAGE);
   const selectedMember = TEAM[selectedIndex];
 

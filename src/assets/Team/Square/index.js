@@ -1,9 +1,14 @@
+export { default as AbbassiSquare } from './Abbassi-01.png';
 export { default as AbdalallahSquare } from './Abdalallah-01.png';
 export { default as AbdelsallemSquare } from './Abdelsallem-01.png';
 export { default as AchrefSquare } from './Achref-01.png';
+export { default as AminSquare } from './Amin-01.png';
 export { default as AmiraSquare } from './Amira-01.png';
 export { default as BayaSquare } from './Baya-01.png';
+export { default as BensaidSquare } from './Bensaid-01.png';
 export { default as DoniaSquare } from './Donia-01.png';
+export { default as HediSquare } from './Hedi-01.png';
+export { default as IlyesSquare } from './Ilyes-01.png';
 export { default as JallouliSquare } from './Jallouli-01.png';
 export { default as LaythSquare } from './Layth-01.png';
 export { default as MakniSquare } from './Makni-01.png';

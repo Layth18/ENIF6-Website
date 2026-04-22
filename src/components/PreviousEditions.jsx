@@ -105,7 +105,7 @@ export default function PreviousEditions() {
         </div>
 
         {/* BOTTOM: The "Console" Screen */}
-        <div className="relative w-full min-h-[400px] bg-[#0A1F0A] border-[8px] border-[#114B11] rounded-2xl shadow-[0_24px_64px_rgba(17,75,17,0.2)] overflow-hidden flex flex-col">
+        <div className="relative w-full min-h-[400px] bg-[#174217] border-[8px] border-[#114B11] rounded-2xl shadow-[0_24px_64px_rgba(17,75,17,0.2)] overflow-hidden flex flex-col">
           
           <div className="absolute inset-0 bg-[linear-gradient(rgba(54,206,90,0.03)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-20" />
           <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.8)] pointer-events-none z-20" />

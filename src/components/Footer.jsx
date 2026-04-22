@@ -168,7 +168,7 @@ export default function Footer() {
               {[
                 { Icon: Mail, text: "sbc.enis.ias@ieee.org" },
                 { Icon: MapPin, text: "ENIS, Sfax, Tunisia 🇹🇳" },
-                { Icon: Phone, text: "+216 12 345 678" },
+                { Icon: Phone, text: "+216 20 949 101" },
               ].map(({ Icon, text }, i) => (
                 <div
                   key={i}

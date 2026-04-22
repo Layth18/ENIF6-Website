@@ -1,9 +1,14 @@
+export { default as AbbassiRectangle } from './Abbassi-01.png';
 export { default as AbdallahRectangle } from './Abdallah-01.png';
 export { default as AbdelsalemRectangle } from './Abdelsalem-01.png';
 export { default as AchrefRectangle } from './Achref-01.png';
+export { default as AminRectangle } from './Amin-01.png';
 export { default as AmiraRectangle } from './Amira-01.png';
 export { default as BayaRectangle } from './Baya-01.png';
+export { default as BensaidRectangle } from './Bensaid-01.png';
 export { default as DoniaRectangle } from './Donia-01.png';
+export { default as HediRectangle } from './Hedi-01.png';
+export { default as IlyesRectangle } from './Ilyes-01.png';
 export { default as JallouliRectangle } from './Jallouli-01.png';
 export { default as LaythRectangle } from './Layth-01.png';
 export { default as MakniRectangle } from './Makni-01.png';

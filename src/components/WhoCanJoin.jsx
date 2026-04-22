@@ -1,30 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Lock, Book } from 'lucide-react';
+import { Book } from 'lucide-react';
 
 export default function WhoCanJoin() {
-  // 1. SET YOUR TARGET DATE HERE FOR EVENT REGISTRATION (Format: YYYY-MM-DDTHH:mm:ss)
-  const TARGET_DATE = new Date('2026-06-01T12:00:00'); 
-  
-  const [isEventUnlocked, setIsEventUnlocked] = useState(false);
-  
   // Intersection Observer State
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    // Function to check if the target date has passed for the event
-    const checkDate = () => {
-      const now = new Date();
-      setIsEventUnlocked(now >= TARGET_DATE);
-    };
-
-    // Check immediately on mount
-    checkDate();
-
-    // Optional: Check every minute just in case the user leaves the tab open when the time arrives
-    const interval = setInterval(checkDate, 60000); 
-    return () => clearInterval(interval);
-  }, []);
 
   // Intersection Observer Effect for Watermark
   useEffect(() => {
@@ -91,18 +71,13 @@ export default function WhoCanJoin() {
             {/* 1-Column Layout Container */}
             <div className="flex flex-col gap-4 w-full">
               
-              {/* Row 1: Event Registration (Locked based on target date) */}
+              {/* Row 1: Event Registration (Always Unlocked) */}
               <a 
-                href={isEventUnlocked ? "https://docs.google.com/forms/d/e/1FAIpQLSd5ofGkgbuBcCU_yQxuUF7okT0dRLj50OQ0Y9YUXIpcUWfVwA/viewform" : undefined}
-                target={isEventUnlocked ? "_blank" : undefined}
-                rel={isEventUnlocked ? "noopener noreferrer" : undefined}
-                className={`inline-flex w-full items-center justify-center transition-all duration-300 font-['Outfit',sans-serif] font-bold text-[1.05rem] py-4 px-8 rounded-[60px] whitespace-nowrap
-                  ${isEventUnlocked 
-                    ? 'hover:scale-[1.02] bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-[#114B11] shadow-[0_8px_24px_rgba(54,206,90,0.3)] hover:shadow-[0_12px_32px_rgba(54,206,90,0.4)]' 
-                    : 'bg-[#114B11]/10 text-[#114B11]/40 cursor-not-allowed pointer-events-none border border-[#114B11]/5'
-                  }`}
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdU4jzXRFYJ-tubl_kauo8R-YZmB_izDatuZ752dRkN12fLCQ/viewform?fbclid=IwY2xjawRUUEBleHRuA2FlbQIxMABicmlkETFjNUNnaHZRWXVQa0p4NVl2c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHiZAt0Rkwv8x9uhoZ8iyvjFl0hmOrj2Q2wRLQtSdUSSYbXgFFQkZCCCdY2j8_aem_piz_P1N9QdE-wX1Zt_49ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center transition-all duration-300 font-['Outfit',sans-serif] font-bold text-[1.05rem] py-4 px-8 rounded-[60px] whitespace-nowrap hover:scale-[1.02] bg-gradient-to-br from-[#D9EB4C] to-[#36CE5A] text-[#114B11] shadow-[0_8px_24px_rgba(54,206,90,0.3)] hover:shadow-[0_12px_32px_rgba(54,206,90,0.4)]"
               >
-                {!isEventUnlocked && <Lock size={16} className="mr-2" />}
                 Event Registration
               </a>
 
@@ -142,13 +117,6 @@ export default function WhoCanJoin() {
               </div>
               
             </div>
-
-            {/* Social Media Message (Only shows when event registration is locked) */}
-            {!isEventUnlocked && (
-              <p className="font-['Outfit',sans-serif] text-[0.9rem] text-[#228B22] font-semibold text-center mt-2 animate-pulse">
-                (Event registration opening soon, stay tuned!)
-              </p>
-            )}
 
           </div>
         </div>

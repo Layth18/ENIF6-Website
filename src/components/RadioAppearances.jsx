@@ -61,7 +61,7 @@ export default function RadioAppearances() {
             : "text-[#114B11] opacity-[0.07]"
         }`}
       >
-        RADIO APPEARANCES
+        RADIO
       </div>
 
       {/* Soft decorative BG accent */}
