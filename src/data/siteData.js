@@ -456,12 +456,12 @@ export const TEAM = [
   {
     name: "Emna Bensaid",
     role: "ENIS Ambassador",
-    bio: "Encourages student involvement in IEEE activities, promotes events, and fosters a sense of community among members.",
+    bio: "Emna Bensaid, a 21-year-old computer science engineering student at the National Engineering School of Sfax, is a motivated and forward-thinking tech enthusiast. Actively involved in IEEE, she thrives in collaborative environments and brings strong leadership, creativity, and responsibility to every project she undertakes.",
     portrait: BensaidRectangle,
     thumbnail: BensaidSquare,
-    facebook: "#",
+    facebook: "https://www.facebook.com/share/1D12LmH4CH/?mibextid=wwXIfr",
     instagram: "#",
-    linkedin: "#",
+    linkedin: "www.linkedin.com/in/emna-bensaid-b9b126399",
   },
   {
     name: "Emna Abbassi",
